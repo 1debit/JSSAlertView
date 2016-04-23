@@ -33,9 +33,14 @@ public class JSSAlertView: UIViewController {
 	enum FontType {
 		case Title, Text, Button
 	}
+    
 	var titleFont = "HelveticaNeue-Light"
 	var textFont = "HelveticaNeue"
 	var buttonFont = "HelveticaNeue-Bold"
+    
+    var titleFontSize:CGFloat = 10.0
+    var textFontSize:CGFloat = 10.0
+    var buttonFontSize:CGFloat = 10.0
 	
 	var defaultColor = UIColorFromHex(0xF2F4F4, alpha: 1)
 	
@@ -51,7 +56,7 @@ public class JSSAlertView: UIViewController {
 	
 	let baseHeight:CGFloat = 160.0
 	var alertWidth:CGFloat = 290.0
-	let buttonHeight:CGFloat = 70.0
+	var buttonHeight:CGFloat = 70.0
 	let padding:CGFloat = 20.0
 	
 	var viewWidth:CGFloat?
@@ -98,26 +103,26 @@ public class JSSAlertView: UIViewController {
 		switch type {
 		case .Title:
 			self.titleFont = fontStr
-			if let font = UIFont(name: self.titleFont, size: 24) {
+			if let font = UIFont(name: self.titleFont, size: self.titleFontSize) {
 				self.titleLabel.font = font
 			} else {
-				self.titleLabel.font = UIFont.systemFontOfSize(24)
+				self.titleLabel.font = UIFont.systemFontOfSize(self.titleFontSize)
 			}
 		case .Text:
 			if self.textView != nil {
 				self.textFont = fontStr
-				if let font = UIFont(name: self.textFont, size: 16) {
+				if let font = UIFont(name: self.textFont, size: self.textFontSize) {
 					self.textView.font = font
 				} else {
-					self.textView.font = UIFont.systemFontOfSize(16)
+					self.textView.font = UIFont.systemFontOfSize(self.textFontSize)
 				}
 			}
 		case .Button:
 			self.buttonFont = fontStr
-			if let font = UIFont(name: self.buttonFont, size: 24) {
+			if let font = UIFont(name: self.buttonFont, size: self.buttonFontSize) {
 				self.buttonLabel.font = font
 			} else {
-				self.buttonLabel.font = UIFont.systemFontOfSize(24)
+				self.buttonLabel.font = UIFont.systemFontOfSize(self.buttonFontSize)
 			}
 		}
 		// relayout to account for size changes
@@ -220,10 +225,10 @@ public class JSSAlertView: UIViewController {
 			
 			// set button fonts
 			if self.buttonLabel != nil {
-				buttonLabel.font = UIFont(name: self.buttonFont, size: 20)
+				buttonLabel.font = UIFont(name: self.buttonFont, size: self.buttonFontSize)
 			}
 			if self.cancelButtonLabel != nil {
-				cancelButtonLabel.font = UIFont(name: self.buttonFont, size: 20)
+				cancelButtonLabel.font = UIFont(name: self.buttonFont, size: self.buttonFontSize)
 			}
 			yPos += self.buttonHeight
 		}else{
@@ -313,7 +318,7 @@ public class JSSAlertView: UIViewController {
 		titleLabel.textColor = textColor
 		titleLabel.numberOfLines = 0
 		titleLabel.textAlignment = .Center
-		titleLabel.font = UIFont(name: self.titleFont, size: 24)
+		titleLabel.font = UIFont(name: self.titleFont, size: self.titleFontSize)
 		titleLabel.text = title
 		self.containerView.addSubview(titleLabel)
 		
@@ -324,7 +329,7 @@ public class JSSAlertView: UIViewController {
 			textView.editable = false
 			textView.textColor = textColor
 			textView.textAlignment = .Center
-			textView.font = UIFont(name: self.textFont, size: 16)
+			textView.font = UIFont(name: self.textFont, size: self.textFontSize)
 			textView.backgroundColor = UIColor.clearColor()
 			textView.text = text
 			self.containerView.addSubview(textView)
