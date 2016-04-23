@@ -46,7 +46,7 @@ public class JSSAlertView: UIViewController {
     
     var buttonDismissButtonColor = UIImage.withColor(UIColor.greenColor())
     var buttonCancelColor = UIImage.withColor(UIColor.grayColor())
-    var buttonTextColor = UIColor.grayColor()
+    var buttonTextColor = UIColor.whiteColor()
     var buttonTextEnabledColor = UIColor.whiteColor()
     
     public enum TextColorTheme {
