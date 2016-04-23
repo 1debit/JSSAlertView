@@ -46,10 +46,13 @@ public class JSSAlertView: UIViewController {
     
     var buttonDismissButtonColor = UIImage.withColor(UIColor.greenColor())
     var buttonCancelColor = UIImage.withColor(UIColor.grayColor())
+    var buttonTextColor = UIColor.grayColor()
+    var buttonTextEnabledColor = UIColor.whiteColor()
     
     public enum TextColorTheme {
         case Dark, Light
     }
+    
     var darkTextColor = UIColorFromHex(0x000000, alpha: 0.75)
     var lightTextColor = UIColorFromHex(0xffffff, alpha: 0.9)
     
@@ -368,7 +371,7 @@ public class JSSAlertView: UIViewController {
             alertBackgroundView!.addSubview(dismissButton)
             // Button text
             self.buttonLabel = UILabel()
-            buttonLabel.textColor = textColor
+            buttonLabel.textColor = buttonTextEnabledColor
             buttonLabel.numberOfLines = 1
             buttonLabel.textAlignment = .Center
             if let text = buttonText {
@@ -387,7 +390,7 @@ public class JSSAlertView: UIViewController {
                 // Button text
                 self.cancelButtonLabel = UILabel()
                 cancelButtonLabel.alpha = 0.7
-                cancelButtonLabel.textColor = textColor
+                cancelButtonLabel.textColor = buttonTextColor
                 cancelButtonLabel.numberOfLines = 1
                 cancelButtonLabel.textAlignment = .Center
                 cancelButtonLabel.text = cancelButtonText
