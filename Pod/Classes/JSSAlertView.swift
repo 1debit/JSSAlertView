@@ -268,7 +268,7 @@ public class JSSAlertView: UIViewController {
         return alertview
     }
     
-    public func show(viewController: UIViewController, title: String, text: String?=nil, noButtons: Bool?=false, buttonText: String?=nil, cancelButtonText: String?=nil, color: UIColor?=nil, iconImage: UIImage?=nil, titleFont:UIFont!, textFont:UIFont!, buttonFont:UIFont!, buttonHeight:CGFloat!) -> JSSAlertViewResponder {
+    public func show(viewController: UIViewController, title: String, text: String?=nil, noButtons: Bool?=false, buttonText: String?=nil, cancelButtonText: String?=nil, color: UIColor?=nil, iconImage: UIImage?=nil, titleFont:UIFont!, textFont:UIFont!, buttonFont:UIFont!, buttonHeight:CGFloat!, buttonDismissColor: UIColor!, buttonCancelColor: UIColor!) -> JSSAlertViewResponder {
         self.titleFont = titleFont.fontName
         self.textFont = textFont.fontName
         self.buttonFont = buttonFont.fontName
@@ -278,6 +278,12 @@ public class JSSAlertView: UIViewController {
         self.buttonFontSize = buttonFont.pointSize
         
         self.buttonHeight = buttonHeight
+        
+        if cancelButtonText?.isEmpty != nil {
+            self.buttonCancelColor = UIImage.withColor(buttonCancelColor)
+        }
+        
+        self.buttonDismissButtonColor = UIImage.withColor(buttonDismissColor)
         
         return show(viewController, title:title, text:text, noButtons:noButtons, buttonText:buttonText, cancelButtonText:cancelButtonText, color:color, iconImage:iconImage)
     }
