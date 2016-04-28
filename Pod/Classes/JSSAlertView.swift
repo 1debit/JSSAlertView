@@ -184,7 +184,8 @@ public class JSSAlertView: UIViewController {
         if self.iconImageView != nil {
             yPos += iconImageView.frame.height
             let centerX = (self.alertWidth-self.iconImageView.frame.width)/2
-            self.iconImageView.frame = CGRect(x: 0, y: 0, width: self.iconImage.size.width/2, height: self.iconImage.size.height/2)
+            let ratio = self.iconImage.size.width / self.iconImage.size.height
+            self.iconImageView.frame = CGRect(x: 0, y: 0, width: self.alertWidth-padding, height: (self.alertWidth-padding)/ratio)
             self.iconImageView.frame.origin = CGPoint(x: centerX, y: self.padding)
             yPos += padding
         }
