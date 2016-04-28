@@ -185,9 +185,8 @@ public class JSSAlertView: UIViewController {
             yPos += iconImageView.frame.height
             let centerX = (self.alertWidth-self.iconImageView.frame.width)/2
             let ratio = self.iconImage.size.width / self.iconImage.size.height
-            self.iconImageView.frame = CGRect(x: 0, y: 0, width: self.alertWidth-padding, height: (self.alertWidth-padding)/ratio)
-            self.iconImageView.frame.origin = CGPoint(x: centerX, y: self.padding)
-            yPos += padding
+            self.iconImageView.frame = CGRect(x: 0, y: 0, width: contentWidth, height: contentWidth/ratio)
+            self.iconImageView.frame.origin = CGPoint(x: centerX, y: self.padding/2)
         }
         
         // position the title
@@ -195,7 +194,7 @@ public class JSSAlertView: UIViewController {
         let titleAttr = [NSFontAttributeName:titleLabel.font]
         let titleSize = CGSize(width: contentWidth, height: 90)
         let titleRect = titleString.boundingRectWithSize(titleSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: titleAttr, context: nil)
-        yPos += padding
+        yPos += padding/2
         self.titleLabel.frame = CGRect(x: self.padding, y: yPos, width: self.alertWidth - (self.padding*2), height: ceil(titleRect.size.height))
         yPos += ceil(titleRect.size.height)
         
@@ -208,7 +207,7 @@ public class JSSAlertView: UIViewController {
             let textSize = CGSize(width: contentWidth, height: CGFloat(fmaxf(Float(90.0), Float(realSize.height))))
             let textRect = textString.boundingRectWithSize(textSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: textAttr, context: nil)
             self.textView.frame = CGRect(x: self.padding, y: yPos, width: self.alertWidth - (self.padding*2), height: ceil(textRect.size.height)*2)
-            yPos += ceil(textRect.size.height) + padding/2
+            yPos += ceil(textRect.size.height) + padding
         }
         
         // position the buttons
