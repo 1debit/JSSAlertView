@@ -180,13 +180,15 @@ public class JSSAlertView: UIViewController {
         var yPos:CGFloat = 0.0
         let contentWidth:CGFloat = self.alertWidth - (self.padding*2)
         
-        // position the icon image view, if there is one
-        if self.iconImageView != nil {
+        // position the icon image view, if there is one, of valid size
+        if self.iconImageView != nil && self.iconImage.size.width > 0 {
             yPos += iconImageView.frame.height
             let centerX = (self.alertWidth-self.iconImageView.frame.width)/2
             let ratio = self.iconImage.size.width / self.iconImage.size.height
             self.iconImageView.frame = CGRect(x: 0, y: 0, width: contentWidth, height: contentWidth/ratio)
             self.iconImageView.frame.origin = CGPoint(x: centerX, y: self.padding/2)
+        } else if self.iconImage.size.width == 0 {
+            yPos += padding
         }
         
         // position the title
